@@ -8,3 +8,5 @@ export type AuthResponse = {
         "scope": string;
 
 }
+
+
