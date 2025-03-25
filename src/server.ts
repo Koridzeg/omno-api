@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 import autoload from "@fastify/autoload";
 import { join } from "path";
+import { getAccessToken } from "./services/auth.service";
 
 const fastify = Fastify({ logger: true });
 
