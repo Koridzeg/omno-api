@@ -41,7 +41,7 @@ export interface BillingAddress {
     currency: string;
     lang: string;
     hookUrl: string;
-    callback: string;
+    callback: any;
     callbackFail: string;
     billing: BillingAddress;
     orderId: string;

@@ -1,14 +1,27 @@
 import Fastify from "fastify";
 import autoload from "@fastify/autoload";
 import { join } from "path";
-import { getAccessToken } from "./services/auth.service";
 
 const fastify = Fastify({ logger: true });
 
+fastify.register(require('@fastify/swagger'), {
+  swagger: {
+    info: { title: 'Omno API Integration', version: '1.0.0' },
+    tags: [
+      { name: 'Transaction', description: 'Transaction  endpoints' },
+      { name: 'Webhook', description: 'Webhook  endpoints' }
+    ],
+  },
+});
+
+fastify.register(require('@fastify/swagger-ui'), {
+  routePrefix: '/docs',
+  exposeRoute: true,
+});
+
 fastify.register(autoload, {
-    dir: join(__dirname, "plugins"),
-  });
-  
+  dir: join(__dirname, "plugins"),
+});
 
 fastify.register(autoload, {
   dir: join(__dirname, "routes"),
