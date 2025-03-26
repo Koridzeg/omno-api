@@ -1,8 +1,10 @@
 import axios from "axios";
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { getAccessToken } from "../services/auth.service";
-import { TransactionBodyV2, TransactionResponseV2 } from "../types/create-transaction-v2-types";
-
+import {
+  TransactionBodyV2,
+  TransactionResponseV2,
+} from "../types/create-transaction-v2-types";
 
 const TRANSACTION_URL = "https://api.omno.com/transaction/create";
 
@@ -70,11 +72,10 @@ export default async function (fastify: FastifyInstance) {
       } catch (error: any) {
         reply.log.error("Error during transaction creation:", error.message);
 
-        return reply
-          .send({
-            message: "Failed to create transaction",
-            error: error.message,
-          });
+        return reply.send({
+          message: "Failed to create transaction",
+          error: error.message,
+        });
       }
     }
   );

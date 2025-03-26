@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AuthResponse } from "../types/types";
 
-// This information should ideally be stored in environment variables but i have it like this since when u run the app locally it works
+// This information should ideally be stored in environment variables but i have it like this since when u run the app locally it works 
 const GRANT_TYPE = "client_credentials";
 const CLIENT_ID = "78845621-b958-4dca-9dff-b75cda41c604";
 const CLIENT_SECRET = "21617fc5-5da1-4eeb-97c4-9e7f3e6f2886";
