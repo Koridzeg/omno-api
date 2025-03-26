@@ -15,7 +15,7 @@ fastify.register(require('@fastify/swagger'), {
 });
 
 fastify.register(require('@fastify/swagger-ui'), {
-  routePrefix: '/docs',
+  routePrefix: '/documents',
   exposeRoute: true,
 });
 
@@ -31,6 +31,9 @@ const start = async () => {
   try {
     await fastify.listen({ port: 3000, host: "0.0.0.0" });
     console.log("🚀 Server running at http://localhost:3000");
+    console.log("🚀 Server swagger documents at http://localhost:3000/documents");
+    console.log(`NOTE: If you boot up the localtunel don't forget to change the url to the provided localtunel url Example: localtunels/documents etc.`)
+
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);

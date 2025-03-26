@@ -3,12 +3,26 @@
     import { getAccessToken } from "../services/auth.service";
     import { TransactionBodyH2H } from "../types/create-transactions-h2h-types";
     import { createTransactionSchema } from "../schemas/transaction.schema";
+import axiosRetry from "axios-retry";
 
     const TRANSACTION_URL = "https://api.omno.com/transaction/h2h/create";
 
 
 
     const transactionQueue = new Map<string, { resolve: Function, reject: Function }>();
+
+
+    const axiosInstance = axios.create({
+      baseURL: TRANSACTION_URL
+    });
+
+    axiosRetry(axiosInstance, {
+      retries: 3,
+      retryDelay: axiosRetry.exponentialDelay, 
+      retryCondition: (error) => {
+        return axiosRetry.isNetworkOrIdempotentRequestError(error); 
+      },
+    });
 
     export default async function (fastify: FastifyInstance) {
       fastify.post(
@@ -19,7 +33,30 @@
             ...createTransactionSchema,
             tags: ['Transaction'],
             description: 'Create a new transaction', 
+            response: {
+              200: {
+                type: 'object',
+                properties: {
+                  redirectUrl: { type: 'string', description: 'Redirect URL for the 3D Secure payment' },
+                },
+              },
+              400: {
+                type: 'object',
+                properties: {
+                  message: { type: 'string' },
+                  error: { type: 'string' },
+                },
+              },
+              500: {
+                type: 'object',
+                properties: {
+                  message: { type: 'string' },
+                  error: { type: 'string' },
+                },
+              },
+            },
           },
+          
          },
         async (
           request: FastifyRequest<{ Body: TransactionBodyH2H }>,
@@ -92,15 +129,15 @@
     
       fastify.post('/webhook', {
         schema: {
-          tags: ['webhook'],
+          tags: ['Webhook'],
           description: 'Webhook to handle transaction updates',
-          body: {
-            type: 'object',
-            properties: {
-              orderId: { type: 'string', description: 'Order ID of the transaction' },
-              '3dsRedirectUrl': { type: 'string', description: '3D Secure redirect URL' },
+          response: {
+            200: {
+              type: 'object',
+              properties: {
+                redirectUrl: { type: 'string', description: '3D Secure redirect URL, if applicable' },
+              },
             },
-            required: ['orderId', '3dsRedirectUrl'],
           },
         },
       }, async (request, reply) => {
