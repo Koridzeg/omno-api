@@ -41,9 +41,13 @@ Ensure that you have the following installed on your machine:
     ```
 
 4. Install LocalTunnel or Alternative
-  ```bash
-npm install -g localtunnel
-  ```
+   ```bash
+    npm install -g localtunnel
+   ```
+5. Start the application
+   ```bash
+   npm start
+   ```
 
 
 6.
@@ -51,10 +55,23 @@ npm install -g localtunnel
 lt --port 3000
  ```
 
-7. Follow the neccessary instructions provided in the url of the LocalTunnel to set up the tunel enviorment
+7. Click on the link provided by the localtunel and make sure to  follow the neccessary instructions provided in the LocalTunnel website to set up the tunel
+
+8. Please note that when you start the localtunel change urls acorrdingly example localhost:3000/documents ------> localtunnelurl/documents
+
+9. For better testing experience import the postman collection and swap the {{URL}} with localtunel url
+
+
+## SWAGGER DOCUMENTATION
+
+localhost:3000/documents or yourlocaltunelurl/documents
 
 
 ## API Endpoints
+
+## POSTMAN COLLECTION 
+
+https://api.postman.com/collections/21919756-57bb3ade-5618-414f-9d96-912ff423f4a9?access_key=PMAT-01JQ9VZ4YV6HG9HE50V6YMVQGR
 
 ### Create Transaction
 
