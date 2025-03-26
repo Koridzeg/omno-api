@@ -61,6 +61,20 @@ lt --port 3000
 
 9. For better testing experience import the postman collection and swap the {{URL}} with localtunel url
 
+##Docker Setup
+
+1.Build the docker container 
+```bash
+docker build -t omno-api .
+```
+
+2. Run the application
+```bash
+docker run -p 3000:3000 omno-api
+```
+
+3. Follow the instruction above, After running the docker file u will be provided with localtunnel website and follow the steps
+
 
 ## Swagger Documentation
 
