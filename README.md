@@ -62,17 +62,17 @@ lt --port 3000
 9. For better testing experience import the postman collection and swap the {{URL}} with localtunel url
 
 
-## SWAGGER DOCUMENTATION
+## Swagger Documentation
 
 ```
 localhost:3000/documents or yourlocaltunelurl/documents
 ```
 
-## API Endpoints
-
-## POSTMAN COLLECTION 
+## Postman Collection
 
 https://api.postman.com/collections/21919756-57bb3ade-5618-414f-9d96-912ff423f4a9?access_key=PMAT-01JQ9VZ4YV6HG9HE50V6YMVQGR
+
+## Api Endpoints
 
 ### Create Transaction
 
