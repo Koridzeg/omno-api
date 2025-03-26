@@ -71,7 +71,6 @@ export default async function (fastify: FastifyInstance) {
         reply.log.error("Error during transaction creation:", error.message);
 
         return reply
-          .status(500)
           .send({
             message: "Failed to create transaction",
             error: error.message,

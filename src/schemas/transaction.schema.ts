@@ -1,0 +1,56 @@
+export const createTransactionSchema = {
+    body: {
+      type: "object",
+      required: ["amount", "currency", "orderId", "billing", "cardData"],
+      properties: {
+        amount: { type: "number", minimum: 1 },
+        currency: { type: "string", enum: ["USD", "EUR", "GBP"] },
+        lang: { type: "string", minLength: 2, maxLength: 5 },
+        orderId: { type: "string", minLength: 3 },
+        hookUrl: { type: "string", format: "uri" },
+        callback: { type: "string", format: "uri" },
+        callbackFail: { type: "string", format: "uri" },
+        billing: {
+          type: "object",
+          required: ["firstName", "lastName", "email", "phone"],
+          properties: {
+            firstName: { type: "string", minLength: 1 },
+            lastName: { type: "string", minLength: 1 },
+            address1: { type: "string" },
+            city: { type: "string" },
+            state: { type: "string" },
+            country: { type: "string", minLength: 2, maxLength: 2 },
+            postalCode: { type: "string", minLength: 5, maxLength: 10 },
+            phone: { type: "string", minLength: 10 },
+            email: { type: "string", format: "email" },
+            externalUserId: { type: "string" },
+            dateOfBirth: { type: "string", format: "date" },
+          },
+        },
+        cardData: {
+          type: "object",
+          required: ["cardNumber", "cardHolderName", "cardExpiryDate", "cardCvv"],
+          properties: {
+            cardNumber: { type: "string", pattern: "^[0-9]{16}$" },
+            cardHolderName: { type: "string", minLength: 3 },
+            cardExpiryDate: { type: "string", pattern: "^(0[1-9]|1[0-2])$" },
+            cardExpiryDate2: { type: "string", pattern: "^(20[2-9][0-9])$" },
+            cardCvv: { type: "string", pattern: "^[0-9]{3,4}$" },
+            browser: {
+              type: "object",
+              properties: {
+                colorDepth: { type: "integer" },
+                userAgent: { type: "string" },
+                language: { type: "string" },
+                timeZone: { type: "string" },
+                screenWidth: { type: "integer" },
+                screenHeight: { type: "integer" },
+                customerIp: { type: "string", format: "ipv4" },
+              },
+            },
+          },
+        },
+        saveCard: { type: "boolean" },
+      },
+    },
+  };
