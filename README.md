@@ -57,7 +57,7 @@ lt --port 3000
 
 7. Click on the link provided by the localtunel and make sure to  follow the neccessary instructions provided in the LocalTunnel website to set up the tunel
 
-8. Please note that when you start the localtunel change urls acorrdingly example localhost:3000/documents ------> localtunnelurl/documents
+8. Please note that when you start the localtunel change urls acorrdingly example ``` localhost:3000/documents ------> localtunnelurl/documents ```
 
 9. For better testing experience import the postman collection and swap the {{URL}} with localtunel url
 
@@ -65,7 +65,12 @@ lt --port 3000
 ## Swagger Documentation
 
 ```
-localhost:3000/documents or yourlocaltunelurl/documents
+localhost:3000/documents 
+```
+or
+
+```
+yourlocaltunelurl/documents
 ```
 
 ## Postman Collection
