@@ -41,13 +41,18 @@ Ensure that you have the following installed on your machine:
     ```
 
 4. Install LocalTunnel or Alternative
-```bash
+  ```bash
+npm install -g localtunnel
+  ```
+
+
+6.
+ ```bash
 lt --port 3000
-```
+ ```
 
-5. Follow the neccessary instructions provided in the url of the LocalTunnel to set up the tunel enviorment
+7. Follow the neccessary instructions provided in the url of the LocalTunnel to set up the tunel enviorment
 
-6. 
 
 ## API Endpoints
 
