@@ -7,8 +7,9 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
+# Install dependencies (including ts-node)
 RUN npm install
+RUN npm install -g ts-node
 
 # Install LocalTunnel globally
 RUN npm install -g localtunnel
@@ -20,4 +21,4 @@ COPY . .
 EXPOSE 3000
 
 # Start the application and LocalTunnel together
-CMD ["sh", "-c", "npm start & lt --port 3000"]
+CMD ["sh", "-c", "npx ts-node src/server.ts & lt --port 3000"]
