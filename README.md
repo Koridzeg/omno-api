@@ -63,17 +63,32 @@ lt --port 3000
 
 ## Docker Setup
 
-1.Build the docker container 
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/omno-api.git
+    ```
+
+2. Navigate into the project folder:
+    ```bash
+    cd omno-api
+    ```
+
+  3. Install the dependencies:
+    ```bash
+    npm install
+    ```
+
+3.Build the docker container 
 ```bash
 docker build -t omno-api .
 ```
 
-2. Run the application
+4. Run the application
 ```bash
 docker run -p 3000:3000 omno-api
 ```
 
-3. Follow the instruction above, After running the docker file u will be provided with localtunnel website and follow the steps
+3. Follow the instructions above, After running the docker file you will be provided with localtunnel website and follow the steps
 
 
 ## Swagger Documentation
